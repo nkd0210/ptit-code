@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int a[100][100];
+int n,m;
+int ans;
+void input(){
+	cin >> n >> m;
+	for(int i=1;i<=n;i++){
+		for(int j=1;j<=m;j++){
+			cin >> a[i][j];
+		}
+	}
+	ans = 0;
+}
+void Try(int i, int j){
+	if(i<1 || j<1 || i>n || j>m ){
+		return ;
+	}
+	if(i==n && j==m){
+		ans++;
+		return ;
+	}
+	Try(i+1,j);
+	Try(i,j+1);
+}
+int main(){
+	int T;
+	cin >>T;
+	while(T--){
+		input();
+		Try(1,1);
+		cout << ans << endl;
+	}
+}
