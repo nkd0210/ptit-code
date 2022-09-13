@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int T;
+    cin >> T;
+    while(T--){
+        int k;
+        cin >> k;
+        string s;
+        cin >> s;
+        int dem[1000]={0};
+        int res=0;//so phan tu xuat hien nhieu nhat 
+        for(int i=0;i<s.size();i++){
+            dem[s[i]]++;
+            if(res<dem[s[i]]){
+                res = dem[s[i]];
+            }
+        }
+        // (res-1)*(k-1): so luong ky tu toi thieu co the dien vao khoang trong
+        // s.size()-res: so luong ky tu khac ky tu dc lap lai nhieu nhat
+        if((res-1)*(k-1) > s.size()-res){
+            cout <<"-1"<<endl;
+        }else{
+            cout <<"1"<<endl;
+        }
+    }
+}
