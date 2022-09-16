@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main(){
+    ll n,a[100000];
+    cin >> n;
+    for(int i=0;i<n;i++){
+        cin >> a[i];
+    }
+    set<ll>se;
+    vector<ll>v;
+    sort(a,a+n);
+    ll max1 = a[0]*a[1];//tich 2 so be nhat
+    se.insert(max1);
+    ll max2 = a[n-1]*a[n-2];//tich 2 so lon nhat
+    se.insert(max2);
+    ll max3 = a[n-1]*a[n-2]*a[n-3];//tich 3 so lon nhat
+    se.insert(max3);
+    ll max4 = a[0]*a[1]*a[n-1]; // tich 2 so be nhat vs 1 so lon nhat 
+    se.insert(max4);
+    for(auto x:se){
+        v.push_back(x);
+         
+    }
+    cout << v[v.size()-1] << endl;
+}
