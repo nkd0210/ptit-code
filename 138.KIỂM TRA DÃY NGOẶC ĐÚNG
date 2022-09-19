@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//[ () ] {} { [ () () ] () }
+int main(){
+    int T;
+    cin >> T;
+    while(T--){
+        string s;
+        cin >> s;
+        int res=0;
+        stack<char>st;
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='[' || s[i]=='{' || s[i]=='('){
+                st.push(s[i]);
+            }
+            else if(s[i]==']'){
+                if( st.size()>0 && st.top()=='['){
+                    st.pop();
+                }else{
+                    res=1;
+                    break;
+                }
+            }
+            else if(s[i]=='}'){
+                if( st.size()>0 && st.top()=='{'){
+                    st.pop();
+                }else{
+                    res=1;
+                    break;
+                }
+            }
+            else if(s[i]==')'){
+                if( st.size()>0 && st.top()=='('){
+                    st.pop();
+                }else{
+                    res=1;
+                    break;
+                }
+            }
+        }
+        //xau rong la 1 xau dung
+        if(st.size()>0){
+            res = 1;
+        }
+        if(res==1){
+            cout <<"NO"<<endl;
+        }else{
+            cout <<"YES"<<endl;
+        }
+    }
+    return 0;
+}
