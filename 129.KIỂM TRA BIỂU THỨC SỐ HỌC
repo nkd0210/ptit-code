@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main(){
+    int T;
+    cin >>T;
+    scanf("\n");
+    while(T--){
+        string s;
+        getline(cin,s);
+        stack<char>st;
+        int check=0;
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='('|| s[i] == '+' || s[i] == '-' || s[i] == '*' || s[i] == '/'){
+                st.push(s[i]);
+            }
+            if(s[i]==')'){
+                //ktra thua dau
+                if(st.top()=='('){
+                    check=1;
+                    break;
+                }
+                //loai bo cac dau cong tru nhan chia
+                while(st.size()>0 && st.top()!= '('){
+                    st.pop();
+                }
+                //loai bo di dau (
+                st.pop();
+            }
+        }
+        if(check==1){
+            cout <<"Yes"<<endl;
+        }else{
+            cout <<"No"<<endl;
+        }
+    }
+}
