@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main(){
+    int T;
+    cin >>T;
+    while(T--){
+        stack<string>st;
+        string s;
+        scanf("\n");
+        getline(cin,s);
+        string tmp;
+        stringstream ss(s);
+        while(ss >> tmp){
+            st.push(tmp);
+        }
+        while(!st.empty()){
+            cout << st.top() <<" ";
+            st.pop();
+        }
+        cout << endl;
+    }
+}
