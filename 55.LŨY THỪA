@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const ll mod= 1e9+7;
+ll n,k;
+
+ll Mul(ll a, ll b){
+    if(b==0){
+        return 0ll;
+    }else{
+        ll tmp = Mul(a,b/2);
+        if(b%2==1){
+            return (tmp*2+a)%mod;
+        } 
+        return tmp*2%mod;
+    }
+}
+ll Pow(ll n, ll k){
+    if(k==0){
+        return 1;
+    }else if(k==1){
+        return n%mod;
+    }else{
+        ll tmp = Pow(n,k/2);
+        ll a = Mul(tmp,tmp);
+        if(k%2==1){
+            return a*n%mod;
+        } 
+        return a%mod;
+    }
+}
+int main(){
+    int T;
+    cin >>T;
+    while(T--){
+        cin >> n >> k;
+        cout << Pow(n,k) << endl;
+    }
+}
