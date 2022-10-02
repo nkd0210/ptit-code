@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int T;
+    cin >> T;
+    while(T--){
+        string s; cin >> s;
+        stack<long long>st;
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='+'||s[i]=='-'||s[i]=='*'||s[i]=='/'||s[i]=='%'||s[i]=='^'){
+                long long fi = st.top(); st.pop();
+                long long se = st.top(); st.pop();
+                long long tmp;
+                if(s[i]=='+') tmp = se + fi;
+                else if(s[i]=='-') tmp = se - fi;
+                else if(s[i]=='*') tmp = se * fi;
+                else if(s[i]=='/') tmp = se / fi;
+                else if(s[i]=='%') tmp = se % fi;
+                else if(s[i]=='^'){
+                    tmp = se;
+                    for(int i=0;i<fi-1;i++){
+                        tmp *= se;
+                    }
+                } 
+                st.push(tmp);
+            }else{
+                st.push((long long)(s[i]-'0'));
+            }
+        }
+        cout << st.top() << endl;
+    }
+}
