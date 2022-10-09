@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+vector<long long>v;
+queue<long long>q;
+int main(){
+    int T;
+    cin >>T;
+    while(T--){
+        ll n;
+        cin >> n;
+        ll cnt=0;
+        q.push(1);
+        while(1){
+            ll res = q.front();
+            q.pop();
+            if(res <= n){
+                v.push_back(res);
+            }else{
+                break;
+            }
+            q.push(res * 10);
+            q.push(res * 10 + 1);
+        }
+        cout << v.size() << endl;
+        v.clear();
+        while (q.size() > 0) {
+			q.pop();
+		}
+    }
+    return 0;
+}
