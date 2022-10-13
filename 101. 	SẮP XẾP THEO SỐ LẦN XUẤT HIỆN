@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct dta{
+    int val,cnt;
+};
+bool cmp(dta a, dta b){
+    if(a.cnt > b.cnt) return true;
+    if(a.cnt == b.cnt && a.val < b.val) return true;
+    return false;
+}
+int main(){
+    int T; cin >> T;
+    while(T--){
+        int n; cin >> n;
+        int dem[10000]={};
+        dta a[n];
+        for(int i=0;i<n;i++){
+            cin >>  a[i].val; 
+            dem[a[i].val]++;
+        }
+        for(int i=0;i<n;i++){
+            a[i].cnt = dem[a[i].val];
+        }
+        sort(a,a+n,cmp);
+        for(int i=0;i<n;i++){
+            cout << a[i].val << " ";
+        }
+        cout << endl;
+    }
+}
