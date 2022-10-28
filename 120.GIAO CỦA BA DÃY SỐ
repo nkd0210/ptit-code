@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main(){
+	int T;
+	cin >> T;
+	while(T--){
+		int n,m,k;
+		cin >> n >> m >> k;
+		ll a[n+5];
+		ll b[m+5];
+		ll c[k+5];
+		vector<ll>v;
+		for(int i=0;i<n;i++){
+			cin >> a[i];
+		}
+		for(int j=0;j<m;j++){
+			cin >> b[j];
+		}
+		for(int u=0;u<k;u++){
+			cin >> c[u];
+		}
+		int i=0,j=0,u=0;
+		int res=0;
+		while(i<n && j<m && u<k){
+			if(a[i]==b[j] && b[j]==c[u]){
+				v.push_back(a[i]);
+				res=1;
+				++i;
+				++j;
+				++u;
+			}
+			else if(a[i] < b[j]){
+				i++;
+			}else if(b[j] < c[u]){
+				j++;
+			}else{
+				u++;
+			}
+		}
+		if(res==0){
+			cout <<"-1"<<endl;
+		}else{
+			for(int i=0;i<v.size();i++){
+				cout << v[i] <<" ";
+			}
+			cout << endl;
+		}
+	}
+}
