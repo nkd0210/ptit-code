@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int n,m;
+int color[10001];
+vector<int>adj[10001];
+
+void inp(){
+    cin >> n >> m;
+    memset(color,0,sizeof(color));
+    for(int i=1;i<=n;i++){
+        adj[i].clear();
+    }
+    for(int i=1;i<=m;i++){
+        int x,y;
+        cin >> x >> y;
+        adj[x].push_back(y);
+    }
+}
+
+bool dfs(int u){
+    color[u] = 1;
+    for(int v:adj[u]){
+        if(color[v]==0){
+            if(dfs(v)==true){
+                return true;
+            }
+        }
+        else if(color[v]==1){
+            return true;
+        }
+    }
+    color[u] = 2;
+    return false;
+}
+
+int main(){
+    int T;
+    cin >> T;
+    while(T--){
+        inp();
+        int check = 0;
+        for(int i=1;i<=n;i++){
+            if(color[i]==0){
+                if(dfs(i)==true){
+                    check = 1;
+                    break;
+                }
+            }
+        }
+        if(check == 0){
+            cout <<"NO"<<endl;
+        }else{
+            cout <<"YES"<<endl;
+        }
+    }
+}
