@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int T;
+    cin >> T;
+    while(T--){
+        int n,m;
+        cin >> n >> m;
+        int a[10000]={};
+        int check = 0;
+        for(int i=1;i<=m;i++){
+            int x,y;
+            cin >> x >> y;
+            a[x]++;
+            a[y]--;
+        }
+        for(int i=1;i<=n;i++){
+            if(a[i]!=0){
+                check = 1;
+                break;
+            }
+        }
+        if(check == 0){
+            cout <<"1"<<endl;
+        }else{
+            cout <<"0"<<endl;
+        }
+    }
+}
