@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int n;
+
+void sinh(){
+    queue<long long>q;
+    q.push(9);
+    while(1){
+        long long v = q.front();
+        q.pop();
+        if(v%n==0){
+            cout << v << endl;
+            break;
+        }
+        q.push(v*10);
+        q.push(v*10+9);
+    }
+}
+
+int main(){
+    int T;
+    cin >> T;
+    while(T--){
+        cin >> n;
+        sinh();
+    }
+}
