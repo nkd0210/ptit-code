@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int T;
+    cin >> T;
+    while(T--){
+        string s;
+        cin >> s;
+        int n = s.size();
+        s = " " + s + " ";
+        stack<int>st;
+        st.push(0);
+        int ans = 0;
+        for(int i=1;i<=n;i++){
+            if(s[i]=='('){
+                st.push(i);
+            }else{
+                st.pop();
+                if(st.empty()){
+                    st.push(i);
+                }
+                ans = max(ans,i-st.top());
+            }
+        }
+        cout << ans << endl;
+    }
+}
