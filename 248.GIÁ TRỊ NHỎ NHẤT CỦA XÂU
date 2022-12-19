@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main(){
+    int T;
+    cin >> T;
+    while(T--){
+        string s;
+        ll k;
+        cin >> k;
+        cin >> s;
+        ll dem[10000]={};
+        for(int i=0;i<s.size();i++){
+            dem[s[i]]++;
+        }
+        priority_queue<int,vector<int>>pq;
+        for(int i=0;i<s.size();i++){
+            if(dem[s[i]]>0){
+                pq.push(dem[s[i]]);
+                dem[s[i]] = 0;
+            }
+        }
+        while(k>0 && pq.size()>0){
+            --k;
+            ll t=pq.top(); pq.pop();
+            --t;
+            pq.push(t);
+        }
+        ll res = 0;
+        while(pq.size()>0){
+            ll t= pq.top();pq.pop();
+            res += pow(t,2);
+        }
+        cout << res << endl;
+    }
+}
